@@ -112,7 +112,7 @@ def Convert(string):
     return li
 
 
-Input = "what is three hundred and forty five plus two hundred and fifty three"
+Input = "what is three hundred and forty five plus two hundred and fifty three point five"
 
 input1 = text2int(Input)
 
