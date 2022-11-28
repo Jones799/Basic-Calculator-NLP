@@ -112,7 +112,7 @@ def Convert(string):
     return li
 
 
-Input = "what is three hundred and forty five plus two hundred and fifty three point five"
+Input = "what is three hundred and forty five plus two hundred and fifty three and a half"
 
 input1 = text2int(Input)
 
@@ -121,6 +121,10 @@ if " point " in input1:
 
 if " dot " in input1:
     input2 = input1.replace(" dot ", ".")
+
+if " and a half " in input1:
+    input2 = input1.replace(" and a half ", ".5")
+
 else:
     input2 = input1
 
