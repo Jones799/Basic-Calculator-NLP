@@ -3,13 +3,6 @@ from nltk.stem import WordNetLemmatizer
 import decimal
 
 
-
-Input = "what is three hundred and forty five plus two hundred and fifty three"
-
-
-
-
-
 wnl = WordNetLemmatizer()
 
 
@@ -119,15 +112,23 @@ def Convert(string):
     return li
 
 
+Input = "what is three hundred and forty five plus two hundred and fifty three"
 
 input1 = text2int(Input)
 
+if " point " in input1:
+    input2 = input1.replace(" point ", "." )
+
+if " dot " in input1:
+    input2 = input1.replace(" dot ", ".")
+else:
+    input2 = input1
 
 
 units = ["times", "plus", "subtract", "minus", "divide", "divided", "add", "multiply",
          "divided"]
 
-units2 = (Convert(input1))
+units2 = (Convert(input2))
 
 
 Calculations = {"times":"*", "plus":"+", "subtract":"-", "minus":"-", "divide":"/", "add":"+", "multiply":"*", "divided":"/"}
@@ -137,10 +138,16 @@ Calculations = {"times":"*", "plus":"+", "subtract":"-", "minus":"-", "divide":"
 if any(x in Input for x in units):
     AllMatch = [x for x in units2 if x in units]
     calculationword = next((x for x in units2 if x in units), "False")
-    FirstNumber = input1.split(calculationword, 1)[0]
-    SecondNumber = input1.split(calculationword, 1)[1]
-    first = (re.findall('[0-9]+', FirstNumber))
-    second = (re.findall('[0-9]+', SecondNumber))
+    FirstNumber = input2.split(calculationword, 1)[0]
+    SecondNumber = input2.split(calculationword, 1)[1]
+    if '.' in FirstNumber:
+        first = (re.findall("\d+\.\d+", FirstNumber))
+    else:
+        first = (re.findall("[0-9]+", FirstNumber))
+    if '.' in SecondNumber:
+        second = (re.findall("\d+\.\d+", SecondNumber))
+    else:
+        second = (re.findall("[0-9]+", SecondNumber))
     first1 = ' '.join(map(str, first))
     second1 = ' '.join(map(str, second))
     result1 = (Calculations[calculationword])
