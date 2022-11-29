@@ -118,13 +118,41 @@ def Convert(string):
 input1 = text2int(Input)
 
 if " point " in input1:
-    input2 = input1.replace(" point ", "." )
+    input2 = input1.replace(" point ", ".")
+
+    if " point " in input2:
+        input2 = input2.replace(" point ", ".")
+
+    if " dot " in input2:
+
+        input2 = input2.replace(" dot ", ".")
+
+    if " and a half" in input2:
+        input2 = input2.replace(" and a half", ".5")
 
 elif " dot " in input1:
+    
     input2 = input1.replace(" dot ", ".")
+    
+    if " point " in input2:
+        input2 = input2.replace(" point ", ".")
+
+    if " dot " in input2:
+        input2 = input2.replace(" dot ", ".")
+
+    if " and a half" in input2:
+        input2 = input2.replace(" and a half", ".5")
 
 elif " and a half" in input1:
     input2 = input1.replace(" and a half", ".5")
+    if " point " in input2:
+        input2 = input2.replace(" point ", ".")
+
+    if " dot " in input2:
+        input2 = input2.replace(" dot ", ".")
+
+    if " and a half" in input2:
+        input2 = input2.replace(" and a half", ".5")
 
 else:
     input2 = input1
