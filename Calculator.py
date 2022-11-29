@@ -5,6 +5,8 @@ import decimal
 
 wnl = WordNetLemmatizer()
 
+Input = "what is three hundred and forty five plus two hundred and fifty three and a half"
+
 
 def is_number(x):
     if type(x) == str:
@@ -112,18 +114,17 @@ def Convert(string):
     return li
 
 
-Input = "what is three hundred and forty five plus two hundred and fifty three and a half"
 
 input1 = text2int(Input)
 
 if " point " in input1:
     input2 = input1.replace(" point ", "." )
 
-if " dot " in input1:
+elif " dot " in input1:
     input2 = input1.replace(" dot ", ".")
 
-if " and a half " in input1:
-    input2 = input1.replace(" and a half ", ".5")
+elif " and a half" in input1:
+    input2 = input1.replace(" and a half", ".5")
 
 else:
     input2 = input1
